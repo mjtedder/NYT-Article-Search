@@ -21,28 +21,80 @@
 
 <body>
     <div class='container'>
+
+        <!-- Jumbotron Header -->
         <div class="jumbotron" style="background-color: #20315A ; color: white;">
 
             <h1 class="text-center">
-                    <span style="color: white;">
-                        <i class="fas fa-newspaper"></i>
-                    </span>
-                    New York Times Search
+                <span style="color: white;">
+                    <i class="fas fa-newspaper"></i>
+                </span>
+                New York Times Search
             </h1>
-
         </div>
-    </div>
+
+        <div class='row'>
+            <div class='col-sm-12'>
+                <div class='card'>
+                    <div class='card-header' style='background-color: #20315A ; color: white;'>
+                        <div class='card-title'>
+                            <h5>Search Parameters</h5>
+                        </div>
+                    </div>
+                    <div class='card-body'>
+                        <form>
+                            <div class="form-group">
+                                <label for="searchTermLabel">Search Term:</label>
+                                <input type="text" class="form-control" id="searchTermInput2">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput2">Number of Records to Retrieve:</label>
+                                <select class="custom-select">
+                                    <option value="1">1</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="startYearLabel">Start Year (Optional):</label>
+                                <input type="text" class="form-control" id="startYear">
+                            </div>
+                            <div class="form-group">
+                                <label for="endYearLabel">End Year (Optional):</label>
+                                <input type="text" class="form-control" id="endYear">
+                            </div>
+                            <button class="btn btn-primary" type="submit" id='search'>Search</button>
+                            <button class="btn btn-primary" type="button" id='clearAll'>Clear Results</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <div class='card'>
+                    <div class='card-header' style='background-color: #20315A ; color: white;'>
+                        <div class='card-title'>
+                            <h5>Top Articles</h5>
+                        </div>
+                    </div>
+                    <div class='card-body' id='well-section'>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-
-    <!-- Bootstrap 4 Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <!-- Bootstrap 4 JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <!-- JavaScript-->
-    <script src="main.js"></script>
+        <!-- Bootstrap 4 Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <!-- Bootstrap 4 JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <!-- JavaScript-->
+        <script src="main.js"></script>
 </body>
 
 </html>
