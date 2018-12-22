@@ -16,28 +16,23 @@ var queryurl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key
 // METHODS =====================================================================
 
 
+
 function displayInfo() {
   // Creating a div to hold the movie
-  var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-  url += '?' + $.param({
-    'api-key': "217063ed3d2b47469db37df8ee39f512",
-    'q': "nintendo",
-    'hl': "true"
-  });
   $.ajax({
-    url: url,
+    url: queryurl,
     method: 'GET',
   }).then(function (result) {
     // Storing the headline
     var headline = result.response.docs[0].headline.main;
     console.log(headline)
     console.log(result);
-     // Creating a div to hold the data
-     var resultsDiv = $("<div class='results'>");
-     // Creating an element to have the headline displayed
-     var pOne = $("<p>").text("Headline: " + headline);
-     // Displaying the results
-     resultsDiv.append(pOne);
+    // Creating a div to hold the data
+    var resultsDiv = $("<div class='results'>");
+    // Creating an element to have the headline displayed
+    var pOne = $("<p>").text("Headline: " + headline);
+    // Displaying the results
+    resultsDiv.append(pOne);
     // Adding to browser
     $('#well-section').prepend(resultsDiv);
   }).fail(function (err) {
@@ -46,16 +41,16 @@ function displayInfo() {
 }
 
 // This function handles events where a movie button is clicked
-$("#search").on("click", function(event) {
+$("#search").on("click", function (event) {
   event.preventDefault();
   // This line grabs the input from the textbox
-  var term = $("#searchTermInput2").val().trim();
-
+  searchTerm = $("#searchTermInput2").val().trim();
+  console.log(searchTerm);
   // Adding movie from the textbox to our array
-  movies.push(movie);
+  //movies.push(movie);
 
   // Calling renderButtons which handles the processing of our movie array
-  renderButtons();
+  //renderButtons();
 });
 $('#clearAll').on('click', function () {
   displayInfo();
