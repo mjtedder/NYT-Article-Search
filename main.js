@@ -13,9 +13,9 @@ var endYear = 0;
 var queryurl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authkey + "&q=";
 
 
+
+
 // METHODS =====================================================================
-
-
 
 function displayInfo() {
   // Creating a div to hold the movie
@@ -40,18 +40,22 @@ function displayInfo() {
   });
 }
 
-// This function handles events where a movie button is clicked
+// MAIN PROCESSES
+// ===================================
+
+//1. Retrieve user inputs and convert to variables
+// 2. Use those variables to run AJAX call to the New York Times
+// 3. Break down the NYT Object into useable fields
+// 4. Dynamically generate HTML content
+
+// 5. Dealing with "edge cases" -- bugs or situations that are not intuitive
+
+// This function handles events where a search button is clicked
 $("#search").on("click", function (event) {
   event.preventDefault();
   // This line grabs the input from the textbox
   searchTerm = $("#searchTermInput2").val().trim();
   console.log(searchTerm);
-  // Adding movie from the textbox to our array
-  //movies.push(movie);
-
-  // Calling renderButtons which handles the processing of our movie array
-  //renderButtons();
-});
-$('#clearAll').on('click', function () {
   displayInfo();
+  return false;
 });
