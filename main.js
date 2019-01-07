@@ -25,7 +25,28 @@ function runQuery(numArticles, queryURL) {
     url: queryURL,
     method: 'GET',
   }).done(function(NYTData) {
+
+    for (i = 0; i < numArticles; i++) {
+      console.log("HEADLINE: " + NYTData.response.docs[i].headline.main)
+      console.log("SECTION: " + NYTData.response.docs[i].section_name)
+      console.log("PUBLICATION DATE: " + NYTData.response.docs[i].pub_date)
+      console.log("AUTHOR: " + NYTData.response.docs[i].byline.original)
+      console.log("URL: " + NYTData.response.docs[i].web_url)
+    
+      // Start Dumping HTML here
+      var wellSection = $('<div>')
+      wellSection.addClass('well')
+      wellSection.attr('id', 'articleWell-' + i);
+      $('#well-section').append(wellSection);
+
+      // Attach contents to the appropriate well
+      
+    }
+
+
+    // Logging to the console
     console.log(queryURL)
+    console.log(numResults)
     console.log(NYTData)
   })
 }
@@ -37,37 +58,19 @@ function runQuery(numArticles, queryURL) {
 // 2. Use those variables to run AJAX call to the New York Times
 // 3. Break down the NYT Object into useable fields
 // 4. Dynamically generate HTML content
-/*.then(function (result) {
-  // Storing the headline
-  var headline = result.response.docs[0].headline.main;
-  console.log(headline)
-  console.log(result);
-  // Creating a div to hold the data
-  var resultsDiv = $("<div class='results'>");
-  // Creating an element to have the headline displayed
-  var pOne = $("<p>").text("Headline: " + headline);
-  // Displaying the results
-  resultsDiv.append(pOne);
-  // Adding to browser
-  $('#well-section').prepend(resultsDiv);
-}).fail(function (err) {
-  throw err;
-}); */
-
 // 5. Dealing with "edge cases" -- bugs or situations that are not intuitive
 
 // This function handles events where a search button is clicked
 $("#search").on("click", function () {
 
+  // Get Search Term
   searchTerm = $("#searchTermInput2").val().trim();
-  console.log(searchTerm)
 
-  // Add in the searchTerm
+  // Add in the Search Term
   var newURL = queryURLBase + searchTerm
-  console.log(newURL)
 
   // Get the number of Records
-  numResults = $('');
+  numResults = $('#numRecords').val();
 
   // Get the Start Year and End Year
   startYear = $('#startYear').val().trim();
@@ -92,9 +95,7 @@ $("#search").on("click", function () {
       newURL = newURL + "&end_date" + endYear;
   }
 
-  console.log(newURL);
-
-  runQuery(10, newURL);
+  runQuery(numResults, newURL);
 
 
   return false;
