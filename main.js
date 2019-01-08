@@ -26,6 +26,9 @@ function runQuery(numArticles, queryURL) {
     method: 'GET',
   }).done(function(NYTData) {
 
+    // Clears existing data
+    $('#well-section').empty();
+
     for (i = 0; i < numArticles; i++) {
       console.log("HEADLINE: " + NYTData.response.docs[i].headline.main)
       console.log("SECTION: " + NYTData.response.docs[i].section_name)
