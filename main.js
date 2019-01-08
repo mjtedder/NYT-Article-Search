@@ -30,8 +30,6 @@ function runQuery(numArticles, queryURL) {
     $('#well-section').empty();
 
     for (i = 0; i < numArticles; i++) {
-      console.log("HEADLINE: " + NYTData.response.docs[i].headline.main)
-      console.log("SECTION: " + NYTData.response.docs[i].section_name)
       console.log("PUBLICATION DATE: " + NYTData.response.docs[i].pub_date)
       console.log("AUTHOR: " + NYTData.response.docs[i].byline.original)
       console.log("URL: " + NYTData.response.docs[i].web_url)
@@ -42,9 +40,18 @@ function runQuery(numArticles, queryURL) {
       wellSection.attr('id', 'articleWell-' + i);
       $('#well-section').append(wellSection);
 
+      // Check if things exist
+      if (NYTData.response.docs[i].headline != 'null') {
+        console.log("HEADLINE: " + NYTData.response.docs[i].headline.main)
+        $('#articleWell-' + i).append("<h3>" + NYTData.response.docs[i].headline.main + "</h3>")
+      }
+
+      if (NYTData.response.docs[i].section_name != 'null') {
+        console.log("SECTION: " + NYTData.response.docs[i].section_name)
+        $('#articleWell-' + i).append("<h5>" + NYTData.response.docs[i].section_name + "</h5>")
+      }
+
       // Attach contents to the appropriate well
-      $('#articleWell-' + i).append("<h3>" + NYTData.response.docs[i].headline.main + "</h3>")
-      $('#articleWell-' + i).append("<h5>" + NYTData.response.docs[i].section_name + "</h5>")
       $('#articleWell-' + i).append("<h5>" + NYTData.response.docs[i].pub_date + "</h5>")
       $('#articleWell-' + i).append("<h5>" + NYTData.response.docs[i].byline.original + "</h5>")
       $('#articleWell-' + i).append("<a href=" + NYTData.response.docs[i].web_url + ">" +  NYTData.response.docs[i].web_url + "</a>")
