@@ -106,7 +106,7 @@ $("#search").on("click", function () {
       endYear = endYear + '0101';
 
       // Add the date information to the URL
-      newURL = newURL + "&end_date" + endYear;
+      newURL = newURL + "&end_date=" + endYear;
   }
 
   runQuery(numResults, newURL);
